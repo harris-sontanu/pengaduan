@@ -57,6 +57,13 @@ class PostResource extends Resource
                                 ->options(PostStatus::class)
                                 ->native('false'),
 
+                            RichEditor::make('tanggapan')
+                                ->requiredIf('status', PostStatus::APPROVED->value)
+                                ->visible(function (Get $get) { 
+                                    return $get('status') == PostStatus::APPROVED->value; 
+                                })
+                                ->columnSpanFull(),
+
                             RichEditor::make('reaseon')
                                 ->requiredIf('status', PostStatus::REJECTED->value)
                                 ->visible(function (Get $get) { 
