@@ -21,6 +21,7 @@ class Post extends Model
         'attatchment',
         'user_id',
         'reaseon',
+        'tanggapan',
     ];
 
     protected $casts  = [
